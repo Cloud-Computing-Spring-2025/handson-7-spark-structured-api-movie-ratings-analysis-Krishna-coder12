@@ -178,11 +178,11 @@ Find users who are **at risk of churn** by identifying those with **canceled sub
 - **Analyze Watch Time**: Identify users with `WatchTime < 100` minutes.  
 - **Count At-Risk Users**: Compute the total number of such users.  
 
-**Expected Outcome:**  
+**Outcome:**  
 
 A count of users who **canceled their subscriptions and had low engagement**, highlighting **potential churn risks**.
 
-**Example Output:**  
+**Output:**  
 
 
 |Churn Risk Users                                  |	Total Users |
@@ -203,11 +203,11 @@ Analyze how **movie-watching trends** have changed over the years and find peak 
 - **Analyze Trends**: Identify patterns and compare year-over-year growth in movie consumption.  
 - **Find Peak Years**: Highlight the years with the highest number of movies watched.  
 
-**Expected Outcome:**  
+**Outcome:**  
 
 A summary of **movie-watching trends** over the years, indicating peak years for streaming activity.
 
-**Example Output:**  
+**Output:**  
 
 | Watched Year | Movies watched |
 |--------------|----------------|

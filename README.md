@@ -68,7 +68,12 @@ You can run the analysis tasks either locally or using Docker.
    docker-compose up -d
    ```
 
-2. **Run Your PySpark Scripts Using `spark-submit`**:
+2. **Run the Python file**:
+   ```bash
+   python generate_dataset.py
+   ```
+   
+3. **Run Your PySpark Scripts Using `spark-submit`**:
    Update all the Python files according to the requirements and run the below,
    
    ```bash

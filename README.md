@@ -51,14 +51,6 @@ MovieRatingsAnalysis/
 └── README.md
 ```
 
-
-
-
-
-
-
-
-
 - **input/**: Contains the `movie_ratings_data.csv` dataset.
 - **outputs/**: Directory where the results of each task will be saved.
 - **src/**: Contains the individual Python scripts for each task.
@@ -69,14 +61,14 @@ MovieRatingsAnalysis/
 
 You can run the analysis tasks either locally or using Docker.
 
-#### **a. Running Locally**
+#### **Running with Docker (Optional)**
 
-1. **Navigate to the Project Directory**:
+1. **Start the Spark Cluster**:
    ```bash
-   cd MovieRatingsAnalysis/
+   docker-compose up -d
    ```
 
-2. **Execute Each Task Using `spark-submit`**:
+2. **Run Your PySpark Scripts Using `spark-submit`**:
    ```bash
    spark-submit src/task1_binge_watching_patterns.py
    spark-submit src/task2_churn_risk_users.py
@@ -84,48 +76,9 @@ You can run the analysis tasks either locally or using Docker.
    ```
 
 3. **Verify the Outputs**:
-   Check the `outputs/` directory for the resulting files:
-   ```bash
-   ls outputs/
-   ```
-   You should see:
-   - `binge_watching_patterns.txt`
-   - `churn_risk_users.csv`
-   - `movie_watching_trends.csv`
-
-#### **b. Running with Docker (Optional)**
-
-1. **Start the Spark Cluster**:
-   ```bash
-   docker-compose up -d
-   ```
-
-2. **Access the Spark Master Container**:
-   ```bash
-   docker exec -it spark-master bash
-   ```
-
-3. **Navigate to the Spark Directory**:
-   ```bash
-   cd /opt/bitnami/spark/
-   ```
-
-4. **Run Your PySpark Scripts Using `spark-submit`**:
-   ```bash
-   spark-submit src/task1_binge_watching_patterns.py
-   spark-submit src/task2_churn_risk_users.py
-   spark-submit src/task3_movie_watching_trends.py
-   ```
-
-5. **Exit the Container**:
-   ```bash
-   exit
-   ```
-
-6. **Verify the Outputs**:
    On your host machine, check the `outputs/` directory for the resulting files.
 
-7. **Stop the Spark Cluster**:
+4. **Stop the Spark Cluster**:
    ```bash
    docker-compose down
    ```

@@ -69,16 +69,18 @@ You can run the analysis tasks either locally or using Docker.
    ```
 
 2. **Run Your PySpark Scripts Using `spark-submit`**:
+   Update all the Python files according to the requirements and run the below,
+   
    ```bash
    spark-submit src/task1_binge_watching_patterns.py
    spark-submit src/task2_churn_risk_users.py
    spark-submit src/task3_movie_watching_trends.py
    ```
 
-3. **Verify the Outputs**:
+4. **Verify the Outputs**:
    On your host machine, check the `outputs/` directory for the resulting files.
 
-4. **Stop the Spark Cluster**:
+5. **Stop the Spark Cluster**:
    ```bash
    docker-compose down
    ```

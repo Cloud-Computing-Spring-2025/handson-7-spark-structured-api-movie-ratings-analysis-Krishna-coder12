@@ -61,7 +61,7 @@ MovieRatingsAnalysis/
 
 You can run the analysis tasks either locally or using Docker.
 
-#### **Running with Docker (Optional)**
+#### **Running with Docker**
 
 1. **Start the Spark Cluster**:
    ```bash
@@ -87,7 +87,7 @@ You can run the analysis tasks either locally or using Docker.
 
 ## **Overview**
 
-In this assignment, you will leverage Spark Structured APIs to analyze a dataset containing employee information from various departments within an organization. Your goal is to extract meaningful insights related to employee satisfaction, engagement, concerns, and job titles. This exercise is designed to enhance your data manipulation and analytical skills using Spark's powerful APIs.
+In this assignment, you will leverage Spark Structured APIs to analyze a dataset containing movie ratings, user engagement, and streaming behavior. The goal is to extract insights about binge-watching patterns, churn risk users, and long-term streaming trends. This exercise will help you strengthen your data transformation and analytical skills using Spark Structured Streaming APIs.
 
 ## **Objectives**
 
@@ -121,19 +121,17 @@ You will work with a dataset containing information about **100+ users** who rat
 
 ---
 
-
-
 ### **Sample Data**
 
 Below is a snippet of the `movie_ratings_data.csv` to illustrate the data structure. Ensure your dataset contains at least 100 records for meaningful analysis.
 
 ```
 UserID,MovieID,MovieTitle,Genre,Rating,ReviewCount,WatchedYear,UserLocation,AgeGroup,StreamingPlatform,WatchTime,IsBingeWatched,SubscriptionStatus
-1,101,Inception,Sci-Fi,4.8,12,2022,US,Adult,Netflix,145,True,Active
-2,102,Titanic,Romance,4.7,8,2021,UK,Adult,Amazon,195,False,Canceled
-3,103,Avengers: Endgame,Action,4.5,15,2023,India,Teen,Disney+,180,True,Active
-4,104,The Godfather,Crime,4.9,20,2020,US,Senior,Amazon,175,False,Active
-5,105,Forrest Gump,Drama,4.8,10,2022,Canada,Adult,Netflix,130,True,Active
+1,485,Spider-Man: No Way Home,Action,2.6,49,2018,UK,Senior,HBO Max,90,False,Active
+2,660,Titanic,Romance,4.5,24,2018,India,Teen,Amazon,64,True,Canceled
+3,714,Toy Story,Animation,2.9,11,2023,UK,Adult,Disney+,218,False,Canceled
+4,906,The Dark Knight,Action,3.6,1,2021,France,Adult,Apple TV,72,True,Canceled
+5,463,Spider-Man: No Way Home,Action,3.4,18,2019,Australia,Teen,Disney+,60,False,Canceled
 ...
 ```
 
@@ -154,16 +152,17 @@ Determine which movies have an average watch time greater than 100 minutes and r
 - **Identify Top Movies**: List movies where the average watch time is among the highest.
 
 
-**Expected Outcome:**
+**Outcome:**
 
 A list of departments meeting the specified criteria, along with the corresponding percentages.
 
-**Example Output:**
+**Output:**
 
 | Age Group   | Binge Watchers | Percentage |
 |-------------|----------------|------------|
-| Teen        | 195            | 45%        |
-| Adult       | 145            | 38%        |
+| Senior      | 10             | 34.48      |
+| Teen        | 16             | 45.71      |
+| Adult       | 21             | 58.33      |
 
 ---
 
@@ -188,9 +187,7 @@ A count of users who **canceled their subscriptions and had low engagement**, hi
 
 |Churn Risk Users                                  |	Total Users |
 |--------------------------------------------------|--------------|
-|Users with low watch time & canceled subscriptions|	350         |
-
-
+|Users with low watch time & canceled subscriptions|	16          |
 
 ---
 
@@ -214,34 +211,11 @@ A summary of **movie-watching trends** over the years, indicating peak years for
 
 | Watched Year | Movies watched |
 |--------------|----------------|
-| 2020         | 1200           |
-| 2021         | 1500           |
-| 2022         | 2100           |
-| 2023         | 2800           |
-
-
----
-
-## **Grading Criteria**
-
-Your assignment will be evaluated based on the following criteria:
-
-- **Question 1**: Correct identification of departments with over 50% high satisfaction and engagement (1 mark).
-- **Question 2**: Accurate analysis of employees who feel valued but didn’t suggest improvements, including proportion (1 mark).
-- **Question 3**: Proper comparison of engagement levels across job titles and correct identification of the top-performing job title (1 mark).
-
-**Total Marks: 3**
+| 2018         | 16          |
+| 2019         | 22          |
+| 2020         | 12          |
+| 2021         | 10          |
+| 2022         | 24          |
+| 2023         | 16          |
 
 ---
-
-## **Submission Guidelines**
-
-- **Code**: Submit all your PySpark scripts located in the `src/` directory.
-- **Report**: Include a report summarizing your findings for each task. Ensure that your report is well-structured, with clear headings and explanations.
-- **Data**: Ensure that the `movie_ratings_data.csv` used for analysis is included in the `data/` directory or provide a script for data generation if applicable.
-- **Format**: Submit your work in a zipped folder containing all necessary files.
-- **Deadline**: [Insert Deadline Here]
-
----
-
-Good luck, and happy analyzing!

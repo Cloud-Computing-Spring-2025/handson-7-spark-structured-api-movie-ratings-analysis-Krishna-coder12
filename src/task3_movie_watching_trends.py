@@ -25,12 +25,22 @@ def load_data(spark, file_path):
 def analyze_movie_watching_trends(df):
     """
     Analyze trends in movie watching over the years.
-
-    TODO: Implement the following steps:
-    1. Group by `WatchedYear` and count the number of movies watched.
-    2. Order the results by `WatchedYear` to identify trends.
+    
+    1. Group by WatchedYear and count the number of movies watched.
+    2. Order the results by WatchedYear.
+    3. Find peak years based on the highest number of movies watched.
     """
-    pass  # Remove this line after implementation
+    # Step 1: Group by 'WatchedYear' and count the number of movies watched
+    movie_watching_trends = df.groupBy("WatchedYear").agg(count("MovieID").alias("Movies_watched"))
+    
+    # Step 2: Order the results by 'WatchedYear'
+    movie_watching_trends = movie_watching_trends.orderBy("WatchedYear")
+    
+    # Step 3: Find the peak year(s)
+    peak_year = movie_watching_trends.orderBy(col("Movies_watched").desc()).limit(1)
+
+    # Combine both trends and peak year for the result
+    return movie_watching_trends, peak_year
 
 def write_output(result_df, output_path):
     """
@@ -44,12 +54,19 @@ def main():
     """
     spark = initialize_spark()
 
-    input_file = "/workspaces/MovieRatingsAnalysis/input/movie_ratings_data.csv"
-    output_file = "/workspaces/MovieRatingsAnalysis/outputs/movie_watching_trends.csv"
+    input_file = "/workspaces/handson-7-spark-structured-api-movie-ratings-analysis-Krishna-coder12/input/movie_ratings_data.csv"
+    output_file = "/workspaces/handson-7-spark-structured-api-movie-ratings-analysis-Krishna-coder12/Outputs/movie_watching_trends.csv"
 
     df = load_data(spark, input_file)
-    result_df = analyze_movie_watching_trends(df)  # Call function here
-    write_output(result_df, output_file)
+    
+    # Analyze movie watching trends
+    movie_watching_trends, peak_year = analyze_movie_watching_trends(df)
+    
+    # Write trends to output file
+    write_output(movie_watching_trends, output_file)
+    
+    # Print peak year to console
+    peak_year.show()
 
     spark.stop()
 
